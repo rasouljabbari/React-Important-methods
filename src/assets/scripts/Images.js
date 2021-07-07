@@ -1,20 +1,6 @@
 export const Images = {
-    OrderNoteImage: require('../image/Use borrow bags.jpg'),
-    Glass: require('../image/complete.png'),
-    placeHolder_img: require('../image/bedmal-place-holder.jpg'),
-    DeleteImg: require('../image/Icon ionic-md-remove-circle-outline.png'),
-    OrderNoteImageEmpty: require('../image/Use borrow bags.jpg'),
-    LogoIcon: require('../image/Icon feather-message-square.png'),
-    Pen: require('../image/Icon material-mode-edit.svg'),
-    Logo: require('../image/Bedmal logo text.png'),
-    Trash: require('../image/Icon material-delete.svg'),
-    MessageSendIcon: require('../image/Send button.svg'),
-    Camera: require('../image/Icon feather-camera.svg'),
-    OrderNoteImage2: require('../image/Use borrow bags.png'),
-    mapIcon: require('../image/mapIcon.png'),
-    bag: require('../image/bag.png'),
-    Checkmark: require('../image/Icon ionic-ios-checkmark.svg'),
-    MetronNot: require('../image/Icon metro-not.svg'),
-    Excel: require('../image/Icon awesome-file-import.svg'),
-    CsvExport: require('../image/ics.svg'),
+    openEye: require('../images/open-eye.jpg'),
+    closeEye: require('../images/close-eye.png'),
 }
+
+// use : Image.OrderNoteImage.default

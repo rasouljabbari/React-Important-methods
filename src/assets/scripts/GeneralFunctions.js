@@ -2,6 +2,7 @@
 import {toast} from "react-toastify";
 import axios from "axios"
 import Swal from "sweetalert2";
+import React from "react";
 const Compress = require('compress.js')
 
 
@@ -228,8 +229,6 @@ export const loader = (state = false) => {
 
 export const setTitle = (title) => {
     document.title = title
-    document.getElementById('dv_header_title').innerText = title
-
 };
 
 export const traverse = (val) => {
@@ -438,7 +437,7 @@ export const ChangeSwitchStatusOrdersOver = (e) => {
 
 export const array_move = (arr, old_index, new_index)=> {
     if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
+        let k = new_index - arr.length + 1;
         while (k--) {
             arr.push(undefined);
         }
@@ -446,3 +445,11 @@ export const array_move = (arr, old_index, new_index)=> {
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
     return arr; // for testing
 };
+
+export default function useToggle(initialValue = false) {
+    const [value, setValue] = React.useState(initialValue);
+    const toggle = React.useCallback(() => {
+        setValue(v => !v);
+    }, []);
+    return [value, toggle];
+}
