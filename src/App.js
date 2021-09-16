@@ -1,17 +1,26 @@
-import React, {useState , useEffect} from 'react'
-import MobContainer from './Components/MobContainer'
-import {Provider} from "react-redux";
-import store from "./redux/store";
-import {Form} from "./Components/Form";
-import AddRemoveUser from "./Components/AddRemoveUser";
+import React, {useState} from "react";
+import FileUpload from "./Components/file-upload.component";
+import Objects from "./Components/Objects";
+import TestRoot from "./Components/test-root";
+import GlassBg from "./Components/glass/GlassBg";
+// const [newUserInfo, setNewUserInfo] = useState({
+//     profileImages: []
+// });
+
+// const updateUploadedFiles = (files) =>
+//     setNewUserInfo({ ...newUserInfo, profileImages: files });
+//
+// const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log(newUserInfo?.profileImages)
+//     //logic to create new user...
+// };
 function App() {
 
+
     return (
-        <Provider store={store}>
-           {/*<MobContainer/>*/}
-           {/* <Form/>*/}
-            <AddRemoveUser/>
-        </Provider>
-    )
+        <GlassBg/>
+    );
 }
-export default App
+
+export default App;
