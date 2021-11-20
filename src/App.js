@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import ExcleExport from './Components/ExcleExport/ExcleExport'
 import AosAnimation from "./Components/Aos Animation/AosAnimation";
+import CkEditorTest from "./Components/CkEditor/CkEditorTest";
+import MultiSelect from "./Components/Multiselect/MultiSelect";
+import ApexChart from "./Components/ApexChart/ApexChart";
 // import ErrorHandlingFun from "./Components/errorHandling/ErrorHandlingFun";
 // const [newUserInfo, setNewUserInfo] = useState({
 //     profileImages: []
@@ -23,7 +26,10 @@ function App() {
             {/*<AgGrid/>*/}
             {/*<ErrorHandlingByPackage/>*/}
             {/*<ExcleExport/>*/}
-            <AosAnimation/>
+            {/*<AosAnimation/>*/}
+            {/*<CkEditorTest/>*/}
+            {/*<MultiSelect/>*/}
+            <ApexChart/>
         </>
     );
 }
