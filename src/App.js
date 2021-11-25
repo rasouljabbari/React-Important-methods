@@ -4,6 +4,8 @@ import AosAnimation from "./Components/Aos Animation/AosAnimation";
 import CkEditorTest from "./Components/CkEditor/CkEditorTest";
 import MultiSelect from "./Components/Multiselect/MultiSelect";
 import ApexChart from "./Components/ApexChart/ApexChart";
+import Rating from "./Components/StarRate";
+import StarRate from "./Components/StarRate";
 // import ErrorHandlingFun from "./Components/errorHandling/ErrorHandlingFun";
 // const [newUserInfo, setNewUserInfo] = useState({
 //     profileImages: []
@@ -29,7 +31,8 @@ function App() {
             {/*<AosAnimation/>*/}
             {/*<CkEditorTest/>*/}
             {/*<MultiSelect/>*/}
-            <ApexChart/>
+            {/*<ApexChart/>*/}
+            <StarRate rating={2.25}/>
         </>
     );
 }
