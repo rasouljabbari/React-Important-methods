@@ -6,21 +6,22 @@ import MultiSelect from "./Components/Multiselect/MultiSelect";
 import ApexChart from "./Components/ApexChart/ApexChart";
 import Rating from "./Components/StarRate";
 import StarRate from "./Components/StarRate";
-// import ErrorHandlingFun from "./Components/errorHandling/ErrorHandlingFun";
-// const [newUserInfo, setNewUserInfo] = useState({
-//     profileImages: []
-// });
+import { getToken, onMessageListener } from './firebase';
+import {Button, Row, Col, Toast} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// const updateUploadedFiles = (files) =>
-//     setNewUserInfo({ ...newUserInfo, profileImages: files });
-//
-// const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(newUserInfo?.profileImages)
-//     //logic to create new user...
-// };
 function App() {
 
+    const [show, setShow] = useState(false);
+    const [notification, setNotification] = useState({title: '', body: ''});
+    const [isTokenFound, setTokenFound] = useState(false);
+    getToken(setTokenFound);
+
+    onMessageListener().then(payload => {
+        setShow(true);
+        setNotification({title: payload.notification.title, body: payload.notification.body})
+        // console.log(payload);
+    }).catch(err => console.log('failed: ', err));
 
     return (
         <>
@@ -32,7 +33,33 @@ function App() {
             {/*<CkEditorTest/>*/}
             {/*<MultiSelect/>*/}
             {/*<ApexChart/>*/}
-            <StarRate rating={2.25}/>
+            {/*<StarRate rating={2.25}/>*/}
+            <div className="App">
+                <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide animation style={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    minWidth: 200
+                }}>
+                    <Toast.Header>
+                        <img
+                            src="../public/logo512.png"
+                            className="rounded mr-2"
+                            alt=""
+                        />
+                        <strong className="mr-auto">{notification.title}</strong>
+
+                    </Toast.Header>
+                    <Toast.Body>{notification.body}</Toast.Body>
+                </Toast>
+                <header className="App-header">
+                    {isTokenFound && <h1> Notification permission enabled 👍🏻 </h1>}
+                    {!isTokenFound && <h1> Need notification permission ❗️ </h1>}
+                    <Button onClick={() => setShow(true)}>Show Toast</Button>
+                </header>
+
+
+            </div>
         </>
     );
 }
