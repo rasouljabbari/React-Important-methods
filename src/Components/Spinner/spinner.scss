@@ -1,0 +1,13 @@
+.spinner-parent {
+  height: 100vh !important;
+  position: relative;
+  background: rgba(0, 0, 0, 0.85);
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
+}
