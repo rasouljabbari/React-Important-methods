@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from "react";
-import '../assets/style/components-styles.css'
-import {Images} from "../assets/scripts/Images";
-import useToggle from "../assets/scripts/GeneralFunctions";
+import '../../assets/style/components-styles.css'
+import {Images} from "../../assets/scripts/Images";
+import useToggle from "../../assets/scripts/GeneralFunctions";
 
 
 

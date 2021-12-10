@@ -1,1 +1,0 @@
-export const BUY_MOB = 'BUT_MOB';
