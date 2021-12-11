@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {signIn, signOut} from "../../redux/actions";
+import Spinner from "../Spinner/Spinner";
 
 class GoogleAuth extends Component {
 
@@ -37,10 +38,10 @@ class GoogleAuth extends Component {
     }
 
     renderAuthButton() {
-
-        if (this.props.isSignedIn === null) {
-            return null
-        } else if (this.props.isSignedIn) {
+        while (this.props.isSignedIn === null) {
+            return <Spinner message={'اطلاعات در حال بارگزاری است، لطفا منتظر بمانید'}/>
+        }
+        if (this.props.isSignedIn) {
             return (
                 <button className={'btn btn-danger'} onClick={this.onSignOut}>
                     Sign Out (User id is : {this.props.user_id})
