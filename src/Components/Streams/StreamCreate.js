@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import {createStream} from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
 
-class StreamCreate extends Component {
-
-    errorHandler ({touched , error}){
-        if(touched && error){
-            return(
+function StreamCreate(props) {
+    let navigate = useNavigate ();
+    const errorHandler = ({touched, error}) => {
+        if (touched && error) {
+            return (
                 <div className="text-danger">
                     {error}
                 </div>
@@ -13,29 +16,29 @@ class StreamCreate extends Component {
         }
     }
 
-    renderInput = ({input, label, meta}) => {
+    const renderInput = ({input, label, meta}) => {
         return (
             <div>
                 <label>{label}</label>
                 <input {...input} autoComplete={'off'}/>
-                <div>{this.errorHandler(meta)}</div>
+                <div>{errorHandler(meta)}</div>
             </div>
         )
     }
 
-    onSubmit(formValues) {
-        console.log(formValues)
+    const onSubmit = (formValues) => {
+        props.createStream(formValues)
+        navigate("/streams");
     }
 
-    render() {
-        return (
-            <form className={'w-100 needs-validation'} onSubmit={this.props.handleSubmit(this.onSubmit)} >
-                <Field name={'title'} type={'number'} component={this.renderInput} label={'Title'}/>
-                <Field name={'description'} component={this.renderInput} label='Description'/>
-                <button className={'btn btn-info'}>Send</button>
-            </form>
-        );
-    }
+
+    return (
+        <form className={'w-100 needs-validation'} onSubmit={props.handleSubmit(onSubmit)}>
+            <Field name={'title'} type={'number'} component={renderInput} label={'Title'}/>
+            <Field name={'description'} component={renderInput} label='Description'/>
+            <button className={'btn btn-info'}>Send</button>
+        </form>
+    )
 }
 
 const validate = (formValues) => {
@@ -51,4 +54,7 @@ const validate = (formValues) => {
     return errors
 }
 
-export default reduxForm({form: 'streamCreate', validate})(StreamCreate);
+
+const formWrapped = reduxForm({form: 'streamCreate', validate})(StreamCreate);
+
+export default connect(null, {createStream})(formWrapped)
